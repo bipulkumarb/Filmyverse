@@ -1,10 +1,9 @@
 import { getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
-import { Audio, ThreeDots } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import ReactStars from 'react-stars';
 import { moviesRef } from '../firebase/firebase';
 import { Link } from 'react-router-dom';
-import { Rating } from '@mui/material';
 
 const Cards = () => {
     const [data, setData] = useState([]);
@@ -24,13 +23,13 @@ const Cards = () => {
     }, [])
 
     return (
-        <div className='flex flex-wrap justify-between px-3 mt-2'>
+        <div className='flex flex-wrap justify-evenly px-3 mt-2'>
             {loading ? <div className='w-full flex justify-center items-center h-96'><ThreeDots height={40} color='white' /></div> :
                 
                     data.map((e, i) => {
                         return (
                             <Link to={`/detail/${e.id}`}><div key={i} className='card font-medium shadow-lg p-2 hover:-translate-y-3 cursor-pointer mt-6 transition-all duration-500 '>
-                                <img className='h-60 md:h-72' src={e.image} />
+                                <img className='w-200px md:w-200px h-60 md:h-72' alt='' src={e.image} />
                                 <h1>
                                     {e.title}
                                 </h1>
